@@ -30,7 +30,7 @@ class FlashServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $configPath = __DIR__ . '/../config/flash.php';
+        $configPath = __DIR__ . '/../../../config/flash.php';
         $this->mergeConfigFrom($configPath, 'flash');
 
         $this->app->bind(
