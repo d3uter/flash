@@ -14,20 +14,36 @@ class FlashServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
+     * Get the config path
+     *
+     * @return string
+     */
+    protected function getConfigPath()
+    {
+        return base_path('config/flash.php');
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void
      */
     public function register()
     {
+        $configPath = __DIR__ . '/../config/flash.php';
+        $this->mergeConfigFrom($configPath, 'flash');
+
         $this->app->bind(
             'Laracasts\Flash\SessionStore',
             'Laracasts\Flash\LaravelSessionStore'
         );
 
-        $this->app->singleton('flash', function () {
-            return $this->app->make('Laracasts\Flash\FlashNotifier');
+        $this->app->singleton('flash', function ($app) {
+            //return $this->app->make('Laracasts\Flash\FlashNotifier');
+            return $this->app->make($app['flash']['notifier']);
         });
+
+
     }
 
     /**
