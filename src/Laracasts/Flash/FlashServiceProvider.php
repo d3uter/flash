@@ -39,8 +39,7 @@ class FlashServiceProvider extends ServiceProvider
         );
 
         $this->app->singleton('flash', function ($app) {
-            //return $this->app->make('Laracasts\Flash\FlashNotifier');
-            return $this->app->make($app['flash']['notifier']);
+            return $this->app->make(config('flash.notifier'));
         });
 
 

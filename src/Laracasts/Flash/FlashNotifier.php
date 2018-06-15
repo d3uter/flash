@@ -37,7 +37,7 @@ class FlashNotifier
      */
     public function info($message = null)
     {
-        return $this->message($message, 'info');
+        return $this->message($message, config('flash.class.info', 'info'));
     }
 
     /**
@@ -48,7 +48,7 @@ class FlashNotifier
      */
     public function success($message = null)
     {
-        return $this->message($message, 'success');
+        return $this->message($message, config('flash.class.success', 'success'));
     }
 
     /**
@@ -59,7 +59,7 @@ class FlashNotifier
      */
     public function error($message = null)
     {
-        return $this->message($message, 'danger');
+        return $this->message($message, config('flash.class.error','danger'));
     }
 
     /**
@@ -70,7 +70,7 @@ class FlashNotifier
      */
     public function warning($message = null)
     {
-        return $this->message($message, 'warning');
+        return $this->message($message, config('flash.class.warning', 'warning'));
     }
 
     /**
